@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>VR Art Gallery</title>
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-asset>
+        <!--Floor texture-->
+        <img id = "floor" src = "floor/black-granite/subtle-black-granite_albedo.png">
+        <img id = "normalfloor" src = "floor/black-granite/subtle-black-granite_normal-ogl.png">
+        <img id = "roughnessfloor" src = "floor/black-granite/subtle-black-granite_ao.png">
+
+        <!--Roof texture-->
+        <img id = "roof" src = "roof/carpet/beige-carpet-worn1-albedo.png">
+        <img id = "normalroof" src = "roof/carpet/beige-carpet-worn1-Normal-ogl.png">
+        <img id = "roughnessroof" src = "roof/carpet/beige-carpet-worn1-Roughness.png">        
+
+        <!--Frame Texture-->
+        <img id = "frame" src = "frame/woodframe.png">
+        <img id = "normalframe" src = "frame/woodframe-normal.png">
+
+        <!--Wall Texture-->
+        <img id = "wallpaper" src = "wallpaper/modern mozaik/modern-shattered-wallpaper_albedo.png">
+        <img id = "normalwallpaper" src = "wallpaper/modern mozaik/modern-shattered-wallpaper_normal-ogl.png">
+        <img id = "roughnesswallpaper" src = "wallpaper/modern mozaik/modern-shattered-wallpaper_ao.png">
+
+        <!--Poster-->
+        <img id = "poster1" src = "poster/poster1.jpg">
+        <img id = "poster2" src = "poster/poster2.jpg">
+        <img id = "poster3" src = "poster/poster3.jpg">
+        <img id = "poster4" src = "poster/poster4.jpg">
+        <img id = "poster5" src = "poster/poster5.jpg">
+        <img id = "poster6" src = "poster/poster6.jpg">
+        <img id = "poster7" src = "poster/poster7.jpg">
+        <img id = "poster8" src = "poster/poster8.jpg">
+        <img id = "poster9" src = "poster/poster9.jpg">
+
+
+      </a-asset>
+      <!-- Ambient light for overall illumination -->
+      <a-light type="ambient" color="#ffffff" intensity="0.2"></a-light>
+
+
+      <!-- Floor -->
+      <a-plane 
+        position="0 0 0" 
+        rotation="-90 0 0" 
+        width="10" 
+        height="10" 
+        src="#floor"
+        repeat="2 2"
+        normal-map="#normalfloor"
+        normal-texture-repeat="2 2"
+        roughness-map="#roughnessfloor"
+        roughness-texture-repeat="2 2"
+        ></a-plane>
+      
+      <!--Roof-->
+      <!--a-plane 
+        position="0 3 0" 
+        rotation="90 0 0" 
+        width="10" height="10" 
+        src="#roof" repeat="5 5" 
+        normal-map="#normalroof" 
+        normal-texture-repeat="5 5" 
+        roughness-map="#roughnessroof"
+        roughness-texture-repeat="5 5">
+      </a-plane-->
+      <a-plane 
+      position="0 3 0" 
+      rotation="90 0 0" 
+      width="10" 
+      height="10" 
+      color="#dcdcdc"
+      ></a-plane>
+
+      <!-- Walls, Frame, & photo -->
+      <!--Front Wall-->
+      <a-box position="0 1.5 -5" width="10" height="3" depth="0.1" src="#wallpaper" repeat="3 1" normap-map="#normalwallpaper" normal-texture-repeat="2 5" roughness-map="#roughnesswallpaper"  roughness-texture-repeat="2 5">
+        <a-box src="#frame" repeat="3 1" normal-map="#normalframe" normal-texture-repeat="3 1" position="0 0 0.3" width="7.75" height="3" depth="0.1" color="#ffffff" >
+          <a-box position="0 0 -0.15" width="7.25" height="3" depth="0.3" color="#ffffff" ></a-box>
+          <a-image id="img9" src="#poster9" position="0 0 0.075" width="7.15" height="2.75"></a-image> 
+          <!--a-box position="0 1 0" width="1.2" height="0.1" depth="0.1" color="#ffffff" ></a-box-->
+          <a-light type="spot" position="0 0.9 0.4" intensity="1" angle="100" penumbra="1" distance="10" target="#img9"></a-light>
+          <a-light type="spot" position="-3.625 0.5 0" rotation="0 90 0" intensity="0.1" angle="90" penumbra="1.5" distance="5"></a-light>
+          <a-light type="spot" position="3.625 0.5 0" rotation="0 -90 0" intensity="0.1" angle="90" penumbra="1.5" distance="5"></a-light>
+        </a-box>
+      </a-box>
+
+      <!--Left Wall (Paket Edubitz)-->
+      <a-box position="-5 1.5 0" width="10" height="3" depth="0.1" rotation="0 90 0" src="#wallpaper" repeat="3 1" normap-map="#normalwallpaper" normal-texture-repeat="2 5" roughness-map="#roughnesswallpaper"  roughness-texture-repeat="2 5">
+        <!--Gambar tengah-->
+        <a-box src="#frame" normal-map="#normalframe"  position="0 0 0.05" width="1.5" height="1.1" depth="0.075" color="#ffffff" >
+          <a-image id="img4" src="#poster4" position="0 0 0.05" width="1.4" height="1"></a-image> 
+          <a-box position="0 1 0" width="1.2" height="0.1" depth="0.1" color="#ffffff" ></a-box>
+          <a-light type="spot" position="0 0.9 0.4" intensity="1" angle="100" penumbra="1" distance="10" target="#img4"></a-light>
+        </a-box>
+
+        <!--Gambar kanan-->
+        <a-box src="#frame" normal-map="#normalframe"  position="2.5 0 0.05" width="1.1" height="1.4" depth="0.075" color="#ffffff" >
+          <a-image id="img5" src="#poster5" position="0 0 0.05" width="0.95" height="1.25"></a-image> 
+          <a-box position="0 1 0" width="1.2" height="0.1" depth="0.1" color="#ffffff" ></a-box>
+          <a-light type="spot" position="0 0.9 0.4" intensity="1" angle="100" penumbra="1" distance="10" target="#img5"></a-light>
+        </a-box>
+
+        <!--Gambar kiri-->
+        <a-box src="#frame" normal-map="#normalframe"  position="-2.5 0 0.05" width="1.1" height="1.4" depth="0.075" color="#ffffff" >
+          <a-image id="img6" src="#poster6" position="0 0 0.05" width="0.95" height="1.25"></a-image> 
+          <a-box position="0 1 0" width="1.2" height="0.1" depth="0.1" color="#ffffff" ></a-box>
+          <a-light type="spot" position="0 0.9 0.4" intensity="1" angle="100" penumbra="1" distance="10" target="#img6"></a-light>
+        </a-box>
+      </a-box>
+
+      <!--Right Wall (CCTV)-->
+      <a-box position="5 1.5 0" width="10" height="3" depth="0.1" rotation="0 -90 0" src="#wallpaper" repeat="3 1" normap-map="#normalwallpaper" normal-texture-repeat="2 5" roughness-map="#roughnesswallpaper"  roughness-texture-repeat="2 5">
+        <!--Gambar Tengah-->
+        <a-box src="#frame" normal-map="#normalframe"  position="0 0 0.05" width="1.1" height="1.4" depth="0.075" color="#ffffff" >
+          <a-image id="img1" src="#poster1" position="0 0 0.05" width="0.95" height="1.25"></a-image> 
+          <a-box position="0 1 0" width="1.2" height="0.1" depth="0.1" color="#ffffff" ></a-box>
+          <a-light type="spot" position="0 0.9 0.4" intensity="1" angle="100" penumbra="1" distance="10" target="#img1"></a-light>
+        </a-box>
+
+        <!--Poster Kanan-->
+        <a-box src="#frame" normal-map="#normalframe"  position="2.5 0 0.05" width="1.1" height="1.4" depth="0.075" color="#ffffff" >
+          <a-image id="img2" src="#poster2" position="0 0 0.05" width="0.95" height="1.25"></a-image> 
+          <a-box position="0 1 0" width="1.2" height="0.1" depth="0.1" color="#ffffff" ></a-box>
+          <a-light type="spot" position="0 0.9 0.4" intensity="1" angle="100" penumbra="1" distance="10" target="#img2"></a-light>
+        </a-box>
+
+        <!--Poster Kiri-->
+        <a-box src="#frame" normal-map="#normalframe"  position="-2.5 0 0.05" width="1.1" height="1.4" depth="0.075" color="#ffffff" >
+          <a-image id="img3" src="#poster3" position="0 0 0.05" width="0.95" height="1.25"></a-image> 
+          <a-box position="0 1 0" width="1.2" height="0.1" depth="0.1" color="#ffffff" ></a-box>
+          <a-light type="spot" position="0 0.9 0.4" intensity="1" angle="100" penumbra="1" distance="10" target="#img3"></a-light>
+        </a-box>
+      </a-box>
+
+      <!--Back Wall-->
+      <a-box position="0 1.5 5" width="10" height="3" depth="0.1" rotation="0 180 0" src="#wallpaper" repeat="3 1" normap-map="#normalwallpaper" normal-texture-repeat="2 5" roughness-map="#roughnesswallpaper"  roughness-texture-repeat="2 5">
+        <!--Gambar Kanan-->
+        <a-box src="#frame" normal-map="#normalframe"  position="1.5 0 0.05" width="1.1" height="1.4" depth="0.075" color="#ffffff" >
+          <a-image id="img7" src="#poster7" position="0 0 0.05" width="0.95" height="1.25"></a-image> 
+          <a-box position="0 1 0" width="1.2" height="0.1" depth="0.1" color="#ffffff" ></a-box>
+          <a-light type="spot" position="0 0.9 0.4" intensity="1" angle="100" penumbra="1" distance="10" target="#img7"></a-light>
+        </a-box>
+
+        <!--Gambar kanan-->
+        <a-box src="#frame" normal-map="#normalframe"  position="-1.5 0 0.05" width="1.1" height="1.4" depth="0.075" color="#ffffff" >
+          <a-image id="img8" src="#poster8" position="0 0 0.05" width="0.95" height="1.25"></a-image> 
+          <a-box position="0 1 0" width="1.2" height="0.1" depth="0.1" color="#ffffff" ></a-box>
+          <a-light type="spot" position="0 0.9 0.4" intensity="1" angle="100" penumbra="1" distance="10" target="#img8"></a-light>
+        </a-box>
+      </a-box>
+
+      <!-- Camera -->
+      <a-entity ccamera look-controls wasd-controls position="0 1.6 0">
+        <a-entity cursor="fuse: true; fuseTimeout: 500" 
+                  position="0 0 -1"
+                  geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+                  material="color: black; shader: flat"></a-entity>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>
